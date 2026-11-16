@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>小學生英語會話樂園 | Lesson 1: Greetings 問候用語</title>
+  <!-- Load Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Load Google Fonts: Nunito & Noto Sans TC for friendly, legible kid-friendly typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Nunito', 'Noto Sans TC', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              sky: '#38BDF8',
+              blue: '#0284C7',
+              sun: '#FACC15',
+              orange: '#FB923C',
+              mint: '#34D399',
+              purple: '#A78BFA',
+              pink: '#F472B6',
+              cream: '#FFFDF7',
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      background-color: #F0F9FF;
+      background-image: radial-gradient(#BAE6FD 1.5px, transparent 1.5px);
+      background-size: 24px 24px;
+    }
+    .speaking-pulse {
+      animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+    }
+    @keyframes pulse-ring {
+      0% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.6); }
+      70% { box-shadow: 0 0 0 12px rgba(56, 189, 248, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
+    }
+    .card-bounce {
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+    }
+    .card-bounce:hover {
+      transform: translateY(-2px);
+    }
+    /* Hide scrollbar for horizontal lesson tabs on mobile */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="text-slate-800 antialiased min-h-screen flex flex-col">
+
+  <!-- Top Navigation & Lesson Roadmap Bar -->
+  <header class="bg-white/95 backdrop-blur-md border-b-4 border-sky-200 sticky top-0 z-40 shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 py-3">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+        <!-- Brand Logo & Title -->
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-sky-400 to-blue-600 flex items-center justify-center text-white text-2xl shadow-md">
+              🇬🇧
+            </div>
+            <div>
+              <h1 class="text-lg sm:text-xl font-black text-sky-900 tracking-tight leading-tight">
+                英國英語會話小樂園
+              </h1>
+              <p class="text-xs font-bold text-sky-600">Primary English Conversation • UK Accent</p>
+            </div>
+          </div>
+
+          <!-- Bilingual Toggle Switch (Mobile visible) -->
+          <button
+            id="toggleChineseMobile"
+            onclick="toggleChinese()"
+            class="md:hidden flex items-center gap-1.5 px-3 py-2 rounded-xl bg-amber-100 hover:bg-amber-200 text-amber-900 font-bold text-xs border-2 border-amber-300 transition active:scale-95"
+            title="切換中文翻譯顯示"
+          >
+            <span id="zhIconMobile">👁️</span>
+            <span id="zhTextMobile">隱藏中文</span>
+          </button>
+        </div>
+
+        <!-- Global Controls: Voice Selector & Bilingual Toggle -->
+        <div class="flex flex-wrap items-center gap-2 sm:gap-3">
+          <!-- UK Voice Indicator / Selector -->
+          <div class="flex items-center gap-1.5 bg-sky-50 border-2 border-sky-200 rounded-xl px-2.5 py-1.5 text-xs font-bold text-sky-800">
+            <span>🎙️ 英國語音:</span>
+            <select id="voiceSelect" onchange="changeVoice()" class="bg-transparent font-bold text-sky-900 focus:outline-none max-w-[140px] sm:max-w-[180px] truncate">
+              <option value="">載入英國語音中...</option>
+            </select>
+          </div>
+
+          <!-- Bilingual Toggle Switch (Desktop) -->
+          <button
+            id="toggleChineseDesktop"
+            onclick="toggleChinese()"
+            class="hidden md:flex items-center gap-2 px-3.5 py-2 rounded-xl bg-amber-100 hover:bg-amber-200 text-amber-900 font-extrabold text-xs border-2 border-amber-300 shadow-sm transition active:scale-95 cursor-pointer"
+          >
+            <span id="zhIconDesktop">👁️</span>
+            <span id="zhTextDesktop">中英對照：開啟</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Future Lessons Roadmap Bar -->
+      <div class="mt-3 pt-2.5 border-t border-slate-100 flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
+        <span class="text-xs font-extrabold text-slate-400 uppercase tracking-wider shrink-0 mr-1">課程單元：</span>
+        
+        <button class="shrink-0 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-sky-500 to-blue-600 text-white font-extrabold text-xs sm:text-sm shadow-sm">
+          <span>⭐ 第1課：Greetings 問候用語</span>
+        </button>
+
+        <button onclick="showToast('「第2課：School & Classroom 校園生活」正在準備中，敬請期待！🎒')" class="shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 font-bold text-xs sm:text-sm transition">
+          <span>🔒 第2課：校園生活</span>
+        </button>
+
+        <button onclick="showToast('「第3課：Family & Friends 家庭與朋友」正在準備中，敬請期待！👨‍👩‍👧‍👦')" class="shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 font-bold text-xs sm:text-sm transition">
+          <span>🔒 第3課：家庭與朋友</span>
+        </button>
+
+        <button onclick="showToast('「第4課：Food & Ordering 飲食點餐」正在準備中，敬請期待！🍔')" class="shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 font-bold text-xs sm:text-sm transition">
+          <span>🔒 第4課：飲食點餐</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Toast Message Box (Replaces alert()) -->
+  <div id="toastBox" class="fixed bottom-5 right-5 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="bg-slate-900 text-white px-4 py-3 rounded-2xl shadow-xl flex items-center gap-2.5 text-sm font-bold border-2 border-sky-400">
+      <span class="text-lg">💡</span>
+      <span id="toastMessage">提示訊息</span>
+    </div>
+  </div>
+
+  <!-- Main Content Area -->
+  <main class="flex-1 max-w-6xl w-full mx-auto px-4 py-6">
+    
+    <!-- Lesson Hero Banner -->
+    <section class="bg-gradient-to-r from-sky-500 via-blue-500 to-indigo-500 rounded-3xl p-5 sm:p-7 text-white shadow-lg mb-6 relative overflow-hidden">
+      <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-extrabold mb-2">
+            <span>📘 Lesson 1</span>
+            <span>•</span>
+            <span>由淺入深會話訓練</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-black tracking-tight mb-1">
+            1. Greetings 問候用語
+          </h2>
+          <p class="text-sky-100 text-sm sm:text-base font-medium max-w-2xl">
+            點擊 <span class="bg-white/25 px-2 py-0.5 rounded-lg font-bold text-white">🔊 正常</span> 聆聽道地英國發音，或點擊 <span class="bg-white/25 px-2 py-0.5 rounded-lg font-bold text-white">🐢 清晰慢讀</span> 聽清楚每一個音節！
+          </p>
+        </div>
+
+        <!-- Quick Stats / Stars Badge -->
+        <div class="flex flex-wrap items-center gap-3 self-start md:self-center">
+          <div class="flex items-center gap-2.5 bg-emerald-500/30 backdrop-blur-md px-3.5 py-2.5 rounded-2xl border border-emerald-200/40">
+            <span class="text-2xl">✅</span>
+            <div>
+              <div class="text-[11px] font-bold text-emerald-100">課本句型覆蓋率</div>
+              <div class="text-sm sm:text-base font-black text-white">已涵蓋全部 60/60 句對話</div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3 bg-white/15 backdrop-blur-md px-3.5 py-2.5 rounded-2xl border border-white/25">
+            <div class="text-2xl">🏆</div>
+            <div>
+              <div class="text-[11px] font-bold text-sky-100">學習進度星星</div>
+              <div class="text-base sm:text-lg font-black text-yellow-300"><span id="starCount">0</span> 顆星星</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Progressive Stage Navigation Tabs (6 Dialogue Chapters + Vocab/60-Sentence Index + Quiz) -->
+    <nav class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2 mb-6" aria-label="學習階段選單">
+      <button onclick="switchTab('level1')" id="tab-level1" class="stage-tab flex flex-col items-center justify-center p-2.5 rounded-2xl border-2 font-extrabold text-xs sm:text-sm transition cursor-pointer bg-white border-sky-500 text-sky-700 shadow-md">
+        <span class="text-lg mb-0.5">🌱</span>
+        <span>初階篇 A</span>
+        <span class="text-[10px] font-bold opacity-80">初次見面打招呼</span>
+      </button>
+
+      <button onclick="switchTab('level2')" id="tab-level2" class="stage-tab flex flex-col items-center justify-center p-2.5 rounded-2xl border-2 font-extrabold text-xs sm:text-sm transition cursor-pointer bg-white/80 border-slate-200 text-slate-600 hover:border-sky-300">
+        <span class="text-lg mb-0.5">🩺</span>
+        <span>初階篇 B</span>
+        <span class="text-[10px] font-bold opacity-80">關心健康與近況</span>
+      </button>
+
+      <button onclick="switchTab('level3')" id="tab-level3" class="stage-tab flex flex-col items-center justify-center p-2.5 rounded-2xl border-2 font-extrabold text-xs sm:text-sm transition cursor-pointer bg-white/80 border-slate-200 text-slate-600 hover:border-sky-300">
+        <span class="text-lg mb-0.5">🏡</span>
+        <span>進階篇 A</span>
+        <span class="text-[10px] font-bold opacity-80">問候家人轉達</span>
+      </button>
+
+      <button onclick="switchTab('level4')" id="tab-level4" class="stage-tab flex flex-col items-center justify-center p-2.5 rounded-2xl border-2 font-extrabold text-xs sm:text-sm transition cursor-pointer bg-white/80 border-slate-200 text-slate-600 hover:border-sky-300">
+        <span class="text-lg mb-0.5">🎉</span>
+        <span>進階篇 B</span>
+        <span class="text-[10px] font-bold opacity-80">老友重逢珍重</span>
+      </button>
+
+      <button onclick="switchTab('level5')" id="tab-level5" class="stage-tab flex flex-col items-center justify-center p-2.5 rounded-2xl border-2 font-extrabold text-xs sm:text-sm transition cursor-pointer bg-white/80 border-slate-200 text-slate-600 hover:border-sky-300">
+        <span class="text-lg mb-0.5">✈️</span>
+        <span>高階篇 A</span>
+        <span class="text-[10px] font-bold opacity-80">聊起英文老師</span>
+      </button>
+
+      <button onclick="switchTab('level6')" id="tab-level6" class="stage-tab flex flex-col items-center justify-center p-2.5 rounded-2xl border-2 font-extrabold text-xs sm:text-sm transition cursor-pointer bg-white/80 border-slate-200 text-slate-600 hover:border-sky-300">
+        <span class="text-lg mb-0.5">🤝</span>
+        <span>高階篇 B</span>
+        <span class="text-[10px] font-bold opacity-80">正式介紹親友</span>
+      </button>
+
+      <button onclick="switchTab('vocab60')" id="tab-vocab60" class="stage-tab flex flex-col items-center justify-center p-2.5 rounded-2xl border-2 font-extrabold text-xs sm:text-sm transition cursor-pointer bg-white/80 border-slate-200 text-slate-600 hover:border-sky-300">
+        <span class="text-lg mb-0.5">📚</span>
+        <span>單字與60句庫</span>
+        <span class="text-[10px] font-bold opacity-80">完整對照與跳轉</span>
+      </button>
+
+      <button onclick="switchTab('quiz')" id="tab-quiz" class="stage-tab flex flex-col items-center justify-center p-2.5 rounded-2xl border-2 font-extrabold text-xs sm:text-sm transition cursor-pointer bg-amber-50 border-amber-300 text-amber-800 hover:bg-amber-100">
+        <span class="text-lg mb-0.5">🎯</span>
+        <span>趣味小挑戰</span>
+        <span class="text-[10px] font-bold opacity-80">聽力與會話測驗</span>
+      </button>
+    </nav>
+
+    <!-- Dynamic Stage Content Container -->
+    <div id="contentArea" class="space-y-6">
+      <!-- Content rendered via JavaScript -->
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t-2 border-sky-100 py-5 mt-10 text-center text-xs sm:text-sm text-slate-500 font-semibold">
+    <p>🇬🇧 小學生英國英語會話互動教室 • Lesson 1: Greetings 問候用語</p>
+    <p class="text-xs text-slate-400 mt-1">建議使用 Chrome / Safari / Edge 瀏覽器以獲得最清晰的英國英語 (en-GB) 語音體驗</p>
+  </footer>
+
+  <script>
+    // ==========================================
+    // 1. DATA: LESSON 1 GREETINGS (ALL 60 SENTENCES + 13 VOCABULARY + 6 PROGRESSIVE DIALOGUE CHAPTERS)
+    // ==========================================
+
+    const allSentences = [
+      { id: 1, en: "Hello.", zh: "哈囉。", level: "初階 A", chapter: "level1", dialogueId: "d-1a" },
+      { id: 2, en: "Good morning.", zh: "早安。", level: "初階 A", chapter: "level1", dialogueId: "d-1a" },
+      { id: 3, en: "I'm James Lee. Are you Grace Lu?", zh: "我是 James Lee，你是 Grace Lu 嗎？", level: "初階 A", chapter: "level1", dialogueId: "d-1a" },
+      { id: 4, en: "Yes, I am.", zh: "是的，我是。", level: "初階 A", chapter: "level1", dialogueId: "d-1a" },
+      { id: 5, en: "How are you?", zh: "你好嗎？", level: "初階 A", chapter: "level1", dialogueId: "d-1a" },
+      { id: 6, en: "Fine, thanks. And you?", zh: "很好，謝謝。你呢？", level: "初階 A", chapter: "level1", dialogueId: "d-1a" },
+      { id: 7, en: "Not too good. I have a cold.", zh: "不太好，我傷風了。", level: "初階 B", chapter: "level2", dialogueId: "d-2a" },
+      { id: 8, en: "How is your wife? I haven't seen her for a long time.", zh: "尊夫人好嗎？我有好長一段時間沒見到她了。", level: "進階 A", chapter: "level3", dialogueId: "d-3a" },
+      { id: 9, en: "Oh, she's awfully busy lately.", zh: "喔，她最近非常忙。", level: "進階 A", chapter: "level3", dialogueId: "d-3a" },
+      { id: 10, en: "How have you been?", zh: "你近來如何？", level: "初階 B", chapter: "level2", dialogueId: "d-2b" },
+      { id: 11, en: "Fine. How about you?", zh: "很好，你呢？", level: "初階 B", chapter: "level2", dialogueId: "d-2b" },
+      { id: 12, en: "Same as usual.", zh: "和往常一樣。", level: "初階 B", chapter: "level2", dialogueId: "d-2b" },
+      { id: 13, en: "Good-bye, Grace.", zh: "再見，Grace。", level: "初階 A", chapter: "level1", dialogueId: "d-1a" },
+      { id: 14, en: "So long.", zh: "再見。", level: "初階 A", chapter: "level1", dialogueId: "d-1a" },
+      { id: 15, en: "See you next Monday.", zh: "下週一再見。", level: "初階 A", chapter: "level1", dialogueId: "d-1a" },
+      { id: 16, en: "What good wind brings you here?", zh: "什麼風把你吹來的？", level: "進階 B", chapter: "level4", dialogueId: "d-4a" },
+      { id: 17, en: "It's been a long time since we met.", zh: "自從上次我們見面以來好久不見了。", level: "進階 B", chapter: "level4", dialogueId: "d-4a" },
+      { id: 18, en: "Very nice to meet you.", zh: "遇見你真好。", level: "初階 A", chapter: "level1", dialogueId: "d-1a" },
+      { id: 19, en: "How do you do?", zh: "久仰。（幸會）", level: "初階 A", chapter: "level1", dialogueId: "d-1a" },
+      { id: 20, en: "Hi, What a surprise to meet you here!", zh: "嗨，沒想到在這兒遇見你！", level: "進階 B", chapter: "level4", dialogueId: "d-4a" },
+      { id: 21, en: "Take care of yourself until we meet again.", zh: "我們再見以前請善自珍重。", level: "進階 B", chapter: "level4", dialogueId: "d-4a" },
+      { id: 22, en: "I hope we can get together again soon.", zh: "希望不久我們能再重逢。", level: "進階 B", chapter: "level4", dialogueId: "d-4a" },
+      { id: 23, en: "It's been a pleasure talking to you.", zh: "與你談話真愉快。", level: "進階 B", chapter: "level4", dialogueId: "d-4a" },
+      { id: 24, en: "Good luck and take care.", zh: "祝你好運和保重。", level: "進階 B", chapter: "level4", dialogueId: "d-4a" },
+      { id: 25, en: "Same to you.", zh: "你也一樣（彼此彼此）。", level: "進階 B", chapter: "level4", dialogueId: "d-4a" },
+      { id: 26, en: "Good evening. How are you?", zh: "晚上好，你好嗎？", level: "進階 A", chapter: "level3", dialogueId: "d-3a" },
+      { id: 27, en: "Fine, thanks. How are you?", zh: "好，謝謝。你好嗎？", level: "進階 A", chapter: "level3", dialogueId: "d-3a" },
+      { id: 28, en: "Very well. How's your mother?", zh: "很好。你母親好嗎？", level: "進階 A", chapter: "level3", dialogueId: "d-3a" },
+      { id: 29, en: "She's fine. Thank you.", zh: "她很好，謝謝。", level: "進階 A", chapter: "level3", dialogueId: "d-3a" },
+      { id: 30, en: "I haven't seen her for a long time. Please give her my regards.", zh: "我很久沒看到她了。請代我問候她。", level: "進階 A", chapter: "level3", dialogueId: "d-3a" },
+      { id: 31, en: "I will. Thanks.", zh: "我會的，謝謝。", level: "進階 A", chapter: "level3", dialogueId: "d-3a" },
+      { id: 32, en: "Good morning. How are you today?", zh: "早安，你今天好嗎？", level: "初階 B", chapter: "level2", dialogueId: "d-2a" },
+      { id: 33, en: "Well, not very well.", zh: "不太好。", level: "初階 B", chapter: "level2", dialogueId: "d-2a" },
+      { id: 34, en: "What's the trouble?", zh: "怎麼了？", level: "初階 B", chapter: "level2", dialogueId: "d-2a" },
+      { id: 35, en: "I have a headache.", zh: "我頭疼。", level: "初階 B", chapter: "level2", dialogueId: "d-2a" },
+      { id: 36, en: "That's too bad. I hope you'll get well soon.", zh: "真不巧。希望你很快就痊癒。", level: "初階 B", chapter: "level2", dialogueId: "d-2a" },
+      { id: 37, en: "Thank you. I hope so too.", zh: "謝謝，我也希望如此。", level: "初階 B", chapter: "level2", dialogueId: "d-2a" },
+      { id: 38, en: "Hello, Mr. Lee. How are you?", zh: "嗨，李先生，你好嗎？", level: "初階 B", chapter: "level2", dialogueId: "d-2b" },
+      { id: 39, en: "Fine, thank you.", zh: "好，謝謝你。", level: "初階 B", chapter: "level2", dialogueId: "d-2b" },
+      { id: 40, en: "Let me introduce my wife to you. This is Mr. Lee.", zh: "讓我來介紹我的太太。（對太太說）這是李先生。", level: "高階 B", chapter: "level6", dialogueId: "d-6a" },
+      { id: 41, en: "How do you do, Mr. Lee?", zh: "久仰，李先生。", level: "高階 B", chapter: "level6", dialogueId: "d-6a" },
+      { id: 42, en: "How do you do, Mrs. Wang? Very glad to meet you.", zh: "久仰，王太太。很高興見到妳。", level: "高階 B", chapter: "level6", dialogueId: "d-6a" },
+      { id: 43, en: "I'm very glad to meet you.", zh: "我高興見到你。", level: "高階 B", chapter: "level6", dialogueId: "d-6a" },
+      { id: 44, en: "Hi, Pete. What's new?", zh: "嗨，Pete 近來如何？", level: "高階 A", chapter: "level5", dialogueId: "d-5a" },
+      { id: 45, en: "Nothing much. How about you?", zh: "普通。你如何？", level: "高階 A", chapter: "level5", dialogueId: "d-5a" },
+      { id: 46, en: "Same as usual. Except I saw our former English teacher the other day.", zh: "和往常一樣，只是前些時遇見我們以前的英文老師。", level: "高階 A", chapter: "level5", dialogueId: "d-5a" },
+      { id: 47, en: "Oh? Where did you see him?", zh: "噢？你在哪裡遇到他？", level: "高階 A", chapter: "level5", dialogueId: "d-5a" },
+      { id: 48, en: "At the airport. He was leaving for the States.", zh: "在機場。他正要去美國。", level: "高階 A", chapter: "level5", dialogueId: "d-5a" },
+      { id: 49, en: "Did you talk with him?", zh: "你和他談話了嗎？", level: "高階 A", chapter: "level5", dialogueId: "d-5a" },
+      { id: 50, en: "Yes. We talked quite a while. He asked about you.", zh: "有，我們談了很久。他問起你。", level: "高階 A", chapter: "level5", dialogueId: "d-5a" },
+      { id: 51, en: "It's a pity that I didn't get the chance to see him.", zh: "真可惜我沒有機會和他見面。", level: "高階 A", chapter: "level5", dialogueId: "d-5a" },
+      { id: 52, en: "Who's that man over there?", zh: "那邊的那個人是誰？", level: "高階 B", chapter: "level6", dialogueId: "d-6b" },
+      { id: 53, en: "He is my brother, Tom. Let's say hello to him.", zh: "他是我弟弟 Tom，我們過去和他打招呼罷。", level: "高階 B", chapter: "level6", dialogueId: "d-6b" },
+      { id: 54, en: "Hi, Tom. I'd like you to meet my friend, Bill.", zh: "嗨，Tom 我要你來見見我的朋友 Bill。", level: "高階 B", chapter: "level6", dialogueId: "d-6b" },
+      { id: 55, en: "Hello, Bill. I'm very pleased to meet you.", zh: "嗨，Bill，我很高興見到你。", level: "高階 B", chapter: "level6", dialogueId: "d-6b" },
+      { id: 56, en: "Hello, Tom. Very glad to know you.", zh: "嗨，Tom，很高興認識你。", level: "高階 B", chapter: "level6", dialogueId: "d-6b" },
+      { id: 57, en: "Good evening, John. Have you met my sister before?", zh: "晚上好 John，你以前見過我的妹妹嗎？", level: "高階 B", chapter: "level6", dialogueId: "d-6c" },
+      { id: 58, en: "I'm afraid not. How do you do, Miss Smith?", zh: "大概沒有。久仰，Smith 小姐。", level: "高階 B", chapter: "level6", dialogueId: "d-6c" },
+      { id: 59, en: "How do you do, John? My brother often talks about you.", zh: "久仰，John，我哥哥常常談到你。", level: "高階 B", chapter: "level6", dialogueId: "d-6c" },
+      { id: 60, en: "Well, I feel honored.", zh: "我真感榮幸。", level: "高階 B", chapter: "level6", dialogueId: "d-6c" }
+    ];
+
+    // 13 Key Vocabulary items from Textbook Page 5
+    const vocabularyList = [
+      { id: 1, word: "cold", phonetic: "/kəʊld/", pos: "n.", zh: "感冒，傷風", exampleEn: "I have a cold.", exampleZh: "我傷風了。", emoji: "🤧" },
+      { id: 2, word: "awfully", phonetic: "/ˈɔːfli/", pos: "adv.", zh: "非常地；可怕地", exampleEn: "She's awfully busy lately.", exampleZh: "她最近非常忙。", emoji: "🏃‍♀️" },
+      { id: 3, word: "lately", phonetic: "/ˈleɪtli/", pos: "adv.", zh: "近來；最近", exampleEn: "How have you been lately?", exampleZh: "你近來好嗎？", emoji: "📅" },
+      { id: 4, word: "so long", phonetic: "/səʊ lɒŋ/", pos: "phr.", zh: "再見", exampleEn: "So long!", exampleZh: "再見！", emoji: "👋" },
+      { id: 5, word: "bring", phonetic: "/brɪŋ/", pos: "v.", zh: "帶，帶來", exampleEn: "What good wind brings you here?", exampleZh: "什麼風把你吹來的？", emoji: "🌬️" },
+      { id: 6, word: "surprise", phonetic: "/səˈpraɪz/", pos: "n.", zh: "驚奇，驚喜", exampleEn: "What a surprise to meet you here!", exampleZh: "沒想到在這兒遇見你！", emoji: "🎉" },
+      { id: 7, word: "take care of", phonetic: "/teɪk keər ɒv/", pos: "phr.", zh: "照顧，保重", exampleEn: "Take care of yourself until we meet again.", exampleZh: "我們再見以前請善自珍重。", emoji: "💖" },
+      { id: 8, word: "get together", phonetic: "/ɡet təˈɡeðə/", pos: "phr.", zh: "聚會，重逢", exampleEn: "I hope we can get together again soon.", exampleZh: "希望不久我們能再重逢。", emoji: "🤝" },
+      { id: 9, word: "pleasure", phonetic: "/ˈpleʒə/", pos: "n.", zh: "快樂，愉快", exampleEn: "It's been a pleasure talking to you.", exampleZh: "與你談話真愉快。", emoji: "😊" },
+      { id: 10, word: "same", phonetic: "/seɪm/", pos: "adj.", zh: "相同的", exampleEn: "Same as usual.", exampleZh: "和往常一樣。", emoji: "🔄" },
+      { id: 11, word: "It's a pity that...", phonetic: "/ɪts ə ˈpɪti ðæt/", pos: "phr.", zh: "真可惜……", exampleEn: "It's a pity that I didn't get the chance to see him.", exampleZh: "真可惜我沒有機會和他見面。", emoji: "🥺" },
+      { id: 12, word: "I'm afraid", phonetic: "/aɪm əˈfreɪd/", pos: "phr.", zh: "恐怕，大概", exampleEn: "I'm afraid not.", exampleZh: "大概沒有。", emoji: "🤔" },
+      { id: 13, word: "feel honored to (do)", phonetic: "/fiːl ˈɒnəd tuː/", pos: "phr.", zh: "感到榮幸", exampleEn: "Well, I feel honored.", exampleZh: "我真感榮幸。", emoji: "🎖️" }
+    ];
+
+    // All 60 textbook sentences mapped into 6 progressive dialogue chapters!
+    const chaptersData = {
+      level1: {
+        title: "初階篇 A：初次見面與打招呼 (Meeting & Saying Hello)",
+        subtitle: "收錄課本句型 #1–#6, #13–#15, #18–#19。學會早晨見面問好、確認姓名與禮貌道別。",
+        badgeColor: "bg-emerald-100 text-emerald-800 border-emerald-300",
+        dialogues: [
+          {
+            id: "d-1a",
+            title: "對話 1A：早晨見面與認識新朋友 (Morning Meeting)",
+            desc: "James 和 Grace 在早上見面，互相自我介紹、問好與約定下週一再見。",
+            roles: ["A", "B"],
+            lines: [
+              { speaker: "A", name: "James", avatar: "👦", nums: [1, 2], en: "Hello. Good morning.", zh: "哈囉。早安。" },
+              { speaker: "B", name: "Grace", avatar: "👧", nums: [2], en: "Good morning.", zh: "早安。" },
+              { speaker: "A", name: "James", avatar: "👦", nums: [3], en: "I'm James Lee. Are you Grace Lu?", zh: "我是 James Lee，你是 Grace Lu 嗎？" },
+              { speaker: "B", name: "Grace", avatar: "👧", nums: [4], en: "Yes, I am.", zh: "是的，我是。" },
+              { speaker: "A", name: "James", avatar: "👦", nums: [5], en: "How are you?", zh: "你好嗎？" },
+              { speaker: "B", name: "Grace", avatar: "👧", nums: [6], en: "Fine, thanks. And you?", zh: "很好，謝謝。你呢？" },
+              { speaker: "A", name: "James", avatar: "👦", nums: [18, 19], en: "Very nice to meet you. How do you do?", zh: "遇見你真好。久仰。（幸會）" },
+              { speaker: "B", name: "Grace", avatar: "👧", nums: [19], en: "How do you do?", zh: "久仰。（幸會）" },
+              { speaker: "A", name: "James", avatar: "👦", nums: [13, 15], en: "Good-bye, Grace. See you next Monday.", zh: "再見，Grace。下週一再見。" },
+              { speaker: "B", name: "Grace", avatar: "👧", nums: [14], en: "So long.", zh: "再見。", vocabNote: "*so long：再見" }
+            ]
+          }
+        ]
+      },
+      level2: {
+        title: "初階篇 B：關心身體與健康問候 (Asking About Health)",
+        subtitle: "收錄課本句型 #7, #10–#12, #32–#39。學會詢問身體不適、安慰對方與日常近況問候。",
+        badgeColor: "bg-teal-100 text-teal-800 border-teal-300",
+        dialogues: [
+          {
+            id: "d-2a",
+            title: "對話 2A：身體不舒服的關心 (Feeling Under the Weather)",
+            desc: "老師或同學發現朋友今天氣色不好，關心詢問並祝願早日康復。",
+            roles: ["A", "B"],
+            lines: [
+              { speaker: "A", name: "Teacher", avatar: "👩‍🏫", nums: [32], en: "Good morning. How are you today?", zh: "早安，你今天好嗎？" },
+              { speaker: "B", name: "Student", avatar: "👦", nums: [33], en: "Well, not very well.", zh: "不太好。" },
+              { speaker: "A", name: "Teacher", avatar: "👩‍🏫", nums: [34], en: "What's the trouble?", zh: "怎麼了？" },
+              { speaker: "B", name: "Student", avatar: "👦", nums: [35], en: "I have a headache.", zh: "我頭疼。" },
+              { speaker: "B", name: "Student", avatar: "👦", nums: [7], en: "Not too good. I have a cold.", zh: "不太好，我傷風了。", vocabNote: "*cold [kəʊld] n. 感冒，傷風" },
+              { speaker: "A", name: "Teacher", avatar: "👩‍🏫", nums: [36], en: "That's too bad. I hope you'll get well soon.", zh: "真不巧。希望你很快就痊癒。" },
+              { speaker: "B", name: "Student", avatar: "👦", nums: [37], en: "Thank you. I hope so too.", zh: "謝謝，我也希望如此。" }
+            ]
+          },
+          {
+            id: "d-2b",
+            title: "對話 2B：日常近況寒暄 (Checking In & Saying Goodbye)",
+            desc: "遇見李先生時問候彼此近來如何。",
+            roles: ["A", "B"],
+            lines: [
+              { speaker: "A", name: "Friend", avatar: "🧑", nums: [38], en: "Hello, Mr. Lee. How are you?", zh: "嗨，李先生，你好嗎？" },
+              { speaker: "B", name: "Mr. Lee", avatar: "👨", nums: [39, 10], en: "Fine, thank you. How have you been?", zh: "好，謝謝你。你近來如何？" },
+              { speaker: "A", name: "Friend", avatar: "🧑", nums: [11], en: "Fine. How about you?", zh: "很好，你呢？" },
+              { speaker: "B", name: "Mr. Lee", avatar: "👨", nums: [12], en: "Same as usual.", zh: "和往常一樣。", vocabNote: "*same [seɪm] 相同的" }
+            ]
+          }
+        ]
+      },
+      level3: {
+        title: "進階篇 A：問候家人與轉達問好 (Asking About Family)",
+        subtitle: "收錄課本句型 #8, #9, #26–#31。學會晚上問好、關心對方的母親與太太，並請對方代為轉達問候。",
+        badgeColor: "bg-sky-100 text-sky-800 border-sky-300",
+        dialogues: [
+          {
+            id: "d-3a",
+            title: "對話 3A：晚間見面與問候家人 (Evening Greeting & Family)",
+            desc: "兩位老朋友在傍晚見面，親切地問候彼此的母親與太太。",
+            roles: ["A", "B"],
+            lines: [
+              { speaker: "A", name: "Friend A", avatar: "👨", nums: [26], en: "Good evening. How are you?", zh: "晚上好，你好嗎？" },
+              { speaker: "B", name: "Friend B", avatar: "🧔", nums: [27], en: "Fine, thanks. How are you?", zh: "好，謝謝。你好嗎？" },
+              { speaker: "A", name: "Friend A", avatar: "👨", nums: [28], en: "Very well. How's your mother?", zh: "很好。你母親好嗎？" },
+              { speaker: "B", name: "Friend B", avatar: "🧔", nums: [29], en: "She's fine. Thank you.", zh: "她很好，謝謝。" },
+              { speaker: "A", name: "Friend A", avatar: "👨", nums: [8], en: "How is your wife? I haven't seen her for a long time.", zh: "尊夫人好嗎？我有好長一段時間沒見到她了。" },
+              { speaker: "B", name: "Friend B", avatar: "🧔", nums: [9], en: "Oh, she's awfully busy lately.", zh: "喔，她最近非常忙。", vocabNote: "*awfully [ˈɔːfli] 非常地；*lately [ˈleɪtli] 近來" },
+              { speaker: "A", name: "Friend A", avatar: "👨", nums: [30], en: "I haven't seen her for a long time. Please give her my regards.", zh: "我很久沒看到她了。請代我問候她。" },
+              { speaker: "B", name: "Friend B", avatar: "🧔", nums: [31], en: "I will. Thanks.", zh: "我會的，謝謝。" }
+            ]
+          }
+        ]
+      },
+      level4: {
+        title: "進階篇 B：老友重逢與珍重道別 (Unexpected Reunion & Catching Up)",
+        subtitle: "收錄課本句型 #16, #17, #20–#25。學會表達驚喜重逢、愉快交談與臨別祝福。",
+        badgeColor: "bg-indigo-100 text-indigo-800 border-indigo-300",
+        dialogues: [
+          {
+            id: "d-4a",
+            title: "對話 4A：真巧！沒想到在這兒遇見你 (What a Surprise!)",
+            desc: "久未見面的朋友意外碰面，開心敘舊並互道珍重。",
+            roles: ["A", "B"],
+            lines: [
+              { speaker: "A", name: "Friend A", avatar: "👧", nums: [20], en: "Hi, What a surprise to meet you here!", zh: "嗨，沒想到在這兒遇見你！", vocabNote: "*surprise [səˈpraɪz] n. 驚奇" },
+              { speaker: "B", name: "Friend B", avatar: "👦", nums: [16], en: "What good wind brings you here?", zh: "什麼風把你吹來的？", vocabNote: "*bring [brɪŋ] v. 帶" },
+              { speaker: "A", name: "Friend A", avatar: "👧", nums: [17], en: "It's been a long time since we met.", zh: "自從上次我們見面以來好久不見了。" },
+              { speaker: "B", name: "Friend B", avatar: "👦", nums: [22], en: "I hope we can get together again soon.", zh: "希望不久我們能再重逢。", vocabNote: "*get together：聚會" },
+              { speaker: "A", name: "Friend A", avatar: "👧", nums: [23], en: "It's been a pleasure talking to you.", zh: "與你談話真愉快。", vocabNote: "*pleasure [ˈpleʒə] n. 快樂" },
+              { speaker: "B", name: "Friend B", avatar: "👦", nums: [21], en: "Take care of yourself until we meet again.", zh: "我們再見以前請善自珍重。", vocabNote: "*take care of：照顧、珍重" },
+              { speaker: "A", name: "Friend A", avatar: "👧", nums: [24], en: "Good luck and take care.", zh: "祝你好運和保重。" },
+              { speaker: "B", name: "Friend B", avatar: "👦", nums: [25], en: "Same to you.", zh: "你也一樣（彼此彼此）。", vocabNote: "*same [seɪm] 相同的" }
+            ]
+          }
+        ]
+      },
+      level5: {
+        title: "高階篇 A：聊起共同老師與近況 (Talking About Our Former Teacher)",
+        subtitle: "收錄課本句型 #44–#51。練習完整敘述事件：在機場遇見以前英文老師的經過。",
+        badgeColor: "bg-purple-100 text-purple-800 border-purple-300",
+        dialogues: [
+          {
+            id: "d-5a",
+            title: "對話 5A：在機場遇見以前的英文老師 (Meeting Pete)",
+            desc: "老同學見面聊近況，分享前幾天在機場遇見英文老師準備去美國的消息。",
+            roles: ["A", "B"],
+            lines: [
+              { speaker: "A", name: "Friend", avatar: "🧑", nums: [44], en: "Hi, Pete. What's new?", zh: "嗨，Pete 近來如何？" },
+              { speaker: "B", name: "Pete", avatar: "👦", nums: [45], en: "Nothing much. How about you?", zh: "普通。你如何？" },
+              { speaker: "A", name: "Friend", avatar: "🧑", nums: [46], en: "Same as usual. Except I saw our former English teacher the other day.", zh: "和往常一樣，只是前些時遇見我們以前的英文老師。" },
+              { speaker: "B", name: "Pete", avatar: "👦", nums: [47], en: "Oh? Where did you see him?", zh: "噢？你在哪裡遇到他？" },
+              { speaker: "A", name: "Friend", avatar: "🧑", nums: [48], en: "At the airport. He was leaving for the States.", zh: "在機場。他正要去美國。" },
+              { speaker: "B", name: "Pete", avatar: "👦", nums: [49], en: "Did you talk with him?", zh: "你和他談話了嗎？" },
+              { speaker: "A", name: "Friend", avatar: "🧑", nums: [50], en: "Yes. We talked quite a while. He asked about you.", zh: "有，我們談了很久。他問起你。" },
+              { speaker: "B", name: "Pete", avatar: "👦", nums: [51], en: "It's a pity that I didn't get the chance to see him.", zh: "真可惜我沒有機會和他見面。", vocabNote: "*It's a pity that...：真可惜" }
+            ]
+          }
+        ]
+      },
+      level6: {
+        title: "高階篇 B：正式介紹親友與禮貌引薦 (Introducing Friends & Family)",
+        subtitle: "收錄課本句型 #40–#43, #52–#60。包含三段三人情境對話，學會介紹太太、弟弟與妹妹認識新朋友！",
+        badgeColor: "bg-pink-100 text-pink-800 border-pink-300",
+        dialogues: [
+          {
+            id: "d-6a",
+            title: "對話 6A：介紹太太與李先生認識 (Introducing Mr. Lee & Mrs. Wang)",
+            desc: "王先生向李先生正式介紹自己的太太。",
+            roles: ["A", "B", "C"],
+            lines: [
+              { speaker: "A", name: "Mr. Wang", avatar: "👨", nums: [40], en: "Let me introduce my wife to you. This is Mr. Lee.", zh: "讓我來介紹我的太太。（對太太說）這是李先生。" },
+              { speaker: "B", name: "Mrs. Wang", avatar: "👩", nums: [41], en: "How do you do, Mr. Lee?", zh: "久仰，李先生。" },
+              { speaker: "C", name: "Mr. Lee", avatar: "🧔", nums: [42], en: "How do you do, Mrs. Wang? Very glad to meet you.", zh: "久仰，王太太。很高興見到妳。" },
+              { speaker: "B", name: "Mrs. Wang", avatar: "👩", nums: [43], en: "I'm very glad to meet you.", zh: "我高興見到你。" }
+            ]
+          },
+          {
+            id: "d-6b",
+            title: "對話 6B：介紹弟弟 Tom 與朋友 Bill (Introducing Brother Tom & Friend Bill)",
+            desc: "在路上看見弟弟 Tom，熱情地帶好朋友 Bill 過去打招呼。",
+            roles: ["A", "B", "C"],
+            lines: [
+              { speaker: "A", name: "Bill", avatar: "👦", nums: [52], en: "Who's that man over there?", zh: "那邊的那個人是誰？" },
+              { speaker: "B", name: "Brother", avatar: "🧑", nums: [53], en: "He is my brother, Tom. Let's say hello to him.", zh: "他是我弟弟 Tom，我們過去和他打招呼罷。" },
+              { speaker: "B", name: "Brother", avatar: "🧑", nums: [54], en: "Hi, Tom. I'd like you to meet my friend, Bill.", zh: "嗨，Tom 我要你來見見我的朋友 Bill。" },
+              { speaker: "C", name: "Tom", avatar: "👦", nums: [55], en: "Hello, Bill. I'm very pleased to meet you.", zh: "嗨，Bill，我很高興見到你。" },
+              { speaker: "A", name: "Bill", avatar: "👦", nums: [56], en: "Hello, Tom. Very glad to know you.", zh: "嗨，Tom，很高興認識你。" }
+            ]
+          },
+          {
+            id: "d-6c",
+            title: "對話 6C：介紹妹妹 Smith 小姐 (Introducing Sister Miss Smith)",
+            desc: "哥哥將好朋友 John 介紹給妹妹認識，學習禮貌回應「I feel honored」。",
+            roles: ["A", "B", "C"],
+            lines: [
+              { speaker: "A", name: "Brother", avatar: "🧑", nums: [57], en: "Good evening, John. Have you met my sister before?", zh: "晚上好 John，你以前見過我的妹妹嗎？" },
+              { speaker: "B", name: "John", avatar: "👦", nums: [58], en: "I'm afraid not. How do you do, Miss Smith?", zh: "大概沒有。久仰，Smith 小姐。", vocabNote: "*I'm afraid：恐怕、大概" },
+              { speaker: "C", name: "Miss Smith", avatar: "👩", nums: [59], en: "How do you do, John? My brother often talks about you.", zh: "久仰，John，我哥哥常常談到你。" },
+              { speaker: "B", name: "John", avatar: "👦", nums: [60], en: "Well, I feel honored.", zh: "我真感榮幸。", vocabNote: "*feel honored：感到榮幸" }
+            ]
+          }
+        ]
+      }
+    };
+
+    // Quiz Questions based on Lesson 1
+    const quizQuestions = [
+      {
+        qZh: "聽聽看，當朋友問你「How are you?」時，哪一個是最自然禮貌的回答？",
+        audioEn: "How are you?",
+        options: [
+          { text: "Fine, thanks. And you? (很好，謝謝。你呢？)", correct: true },
+          { text: "I'm afraid not. (大概沒有。)", correct: false },
+          { text: "See you next Monday. (下週一再見。)", correct: false }
+        ]
+      },
+      {
+        qZh: "聽聽這句英國發音，它代表什麼意思？",
+        audioEn: "What a surprise to meet you here!",
+        options: [
+          { text: "沒想到在這兒遇見你！", correct: true },
+          { text: "我頭疼，不太舒服。", correct: false },
+          { text: "讓我來介紹我的太太。", correct: false }
+        ]
+      },
+      {
+        qZh: "當朋友說自己感冒或頭疼（I have a cold / I have a headache）時，你應該怎麼安慰他？",
+        audioEn: "I have a cold.",
+        options: [
+          { text: "That's too bad. I hope you'll get well soon. (真不巧。希望你很快就痊癒。)", correct: true },
+          { text: "What good wind brings you here? (什麼風把你吹來的？)", correct: false },
+          { text: "How do you do, Mr. Lee? (久仰，李先生。)", correct: false }
+        ]
+      },
+      {
+        qZh: "請聽語音，當別人對你說「Good luck and take care.」時，你可以怎麼回覆？",
+        audioEn: "Good luck and take care.",
+        options: [
+          { text: "Same to you. (你也一樣，彼此彼此。)", correct: true },
+          { text: "Yes, I am. (是的，我是。)", correct: false },
+          { text: "Who's that man over there? (那邊的那個人是誰？)", correct: false }
+        ]
+      },
+      {
+        qZh: "在正式場合初次被介紹給別人認識時，非常有禮貌的問候語是什麼？",
+        audioEn: "How do you do? Very glad to meet you.",
+        options: [
+          { text: "How do you do? (久仰 / 幸會)", correct: true },
+          { text: "What's the trouble? (怎麼了？)", correct: false },
+          { text: "Nothing much. (普通。)", correct: false }
+        ]
+      }
+    ];
+
+    // ==========================================
+    // 2. APPLICATION STATE
+    // ==========================================
+    let currentTab = 'level1';
+    let showChinese = true;
+    let stars = 0;
+    let ukVoices = [];
+    let selectedVoiceURI = '';
+    let isPlayingDialogue = false;
+    let stopDialogueFlag = false;
+    // Role-play mute state per dialogue: { [dialogueId]: 'none' | 'A' | 'B' | 'C' }
+    let rolePlayMute = {};
+    // Quiz state
+    let quizIndex = 0;
+    let quizScore = 0;
+    let quizAnswered = false;
+    // Search/filter state for Vocab & 60 Sentences tab
+    let sentenceSearch = '';
+    let sentenceLevelFilter = 'ALL';
+
+    // ==========================================
+    // 3. BRITISH ENGLISH (en-GB) TEXT-TO-SPEECH ENGINE
+    // ==========================================
+    function loadUKVoices() {
+      if (!('speechSynthesis' in window)) {
+        const select = document.getElementById('voiceSelect');
+        if (select) select.innerHTML = '<option value="">瀏覽器不支援語音</option>';
+        return;
+      }
+
+      const allVoices = window.speechSynthesis.getVoices();
+      // Prioritize en-GB voices
+      ukVoices = allVoices.filter(v =>
+        v.lang.toLowerCase().includes('en-gb') ||
+        v.lang.toLowerCase().includes('en_gb') ||
+        v.name.toLowerCase().includes('uk') ||
+        v.name.toLowerCase().includes('british')
+      );
+
+      // Fallback to any English voice if device doesn't have en-GB installed
+      if (ukVoices.length === 0) {
+        ukVoices = allVoices.filter(v => v.lang.toLowerCase().startsWith('en'));
+      }
+
+      const select = document.getElementById('voiceSelect');
+      if (!select) return;
+
+      if (ukVoices.length === 0) {
+        select.innerHTML = '<option value="">預設英國英語 (en-GB)</option>';
+        return;
+      }
+
+      // Sort preferred clear UK voices to the top
+      ukVoices.sort((a, b) => {
+        const preferred = ['daniel', 'serena', 'kate', 'arthur', 'google uk', 'libby', 'ryan', 'sonia'];
+        const aScore = preferred.some(p => a.name.toLowerCase().includes(p)) ? 1 : 0;
+        const bScore = preferred.some(p => b.name.toLowerCase().includes(p)) ? 1 : 0;
+        return bScore - aScore;
+      });
+
+      select.innerHTML = ukVoices.map(v => {
+        const label = v.name.replace(/Microsoft |Google |Apple /g, '');
+        return `<option value="${v.voiceURI}">${label} (${v.lang})</option>`;
+      }).join('');
+
+      if (!selectedVoiceURI || !ukVoices.some(v => v.voiceURI === selectedVoiceURI)) {
+        selectedVoiceURI = ukVoices[0].voiceURI;
+      }
+      select.value = selectedVoiceURI;
+    }
+
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.onvoiceschanged = loadUKVoices;
+    }
+
+    function changeVoice() {
+      const select = document.getElementById('voiceSelect');
+      if (select) {
+        selectedVoiceURI = select.value;
+        speakText("Hello! Ready to practise British English?", 1.0);
+      }
+    }
+
+    /**
+     * Speaks a given English text using British English (en-GB) at the specified rate
+     */
+    function speakText(text, rate = 1.0, highlightEl = null) {
+      return new Promise((resolve) => {
+        if (!('speechSynthesis' in window)) {
+          showToast("⚠️ 你的瀏覽器不支援語音朗讀功能，請改用 Chrome 或 Safari。");
+          resolve();
+          return;
+        }
+
+        window.speechSynthesis.cancel();
+
+        // Remove previous active speaking highlights
+        document.querySelectorAll('.speaking-pulse').forEach(el => {
+          el.classList.remove('speaking-pulse', 'ring-4', 'ring-sky-400', 'bg-sky-50');
+        });
+
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'en-GB';
+        utterance.rate = rate;
+        utterance.pitch = 1.02;
+
+        if (ukVoices.length > 0) {
+          const chosen = ukVoices.find(v => v.voiceURI === selectedVoiceURI) || ukVoices[0];
+          if (chosen) utterance.voice = chosen;
+        }
+
+        if (highlightEl) {
+          highlightEl.classList.add('speaking-pulse', 'ring-4', 'ring-sky-400', 'bg-sky-50');
+        }
+
+        utterance.onend = () => {
+          if (highlightEl) {
+            highlightEl.classList.remove('speaking-pulse', 'ring-4', 'ring-sky-400', 'bg-sky-50');
+          }
+          addStars(1);
+          resolve();
+        };
+
+        utterance.onerror = () => {
+          if (highlightEl) {
+            highlightEl.classList.remove('speaking-pulse', 'ring-4', 'ring-sky-400', 'bg-sky-50');
+          }
+          resolve();
+        };
+
+        window.speechSynthesis.speak(utterance);
+      });
+    }
+
+    function stopDialoguePlayback() {
+      stopDialogueFlag = true;
+      isPlayingDialogue = false;
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+      document.querySelectorAll('.speaking-pulse').forEach(el => {
+        el.classList.remove('speaking-pulse', 'ring-4', 'ring-sky-400', 'bg-sky-50');
+      });
+      document.querySelectorAll('[id^="playAllBtn-"]').forEach(btn => {
+        btn.innerHTML = '<span>▶️ 播放整段對話</span>';
+        btn.classList.remove('bg-rose-500', 'hover:bg-rose-600');
+        btn.classList.add('bg-emerald-500', 'hover:bg-emerald-600');
+      });
+    }
+
+    /**
+     * Plays a full dialogue sequentially with visual highlighting and Role-Play support
+     */
+    async function playFullDialogue(chapterKey, dialogueIdx, rate = 1.0) {
+      if (isPlayingDialogue) {
+        stopDialoguePlayback();
+        return;
+      }
+
+      const dialogue = chaptersData[chapterKey].dialogues[dialogueIdx];
+      if (!dialogue) return;
+
+      isPlayingDialogue = true;
+      stopDialogueFlag = false;
+
+      const btn = document.getElementById(`playAllBtn-${dialogue.id}`);
+      if (btn) {
+        btn.innerHTML = '<span>⏹️ 停止播放</span>';
+        btn.classList.remove('bg-emerald-500', 'hover:bg-emerald-600');
+        btn.classList.add('bg-rose-500', 'hover:bg-rose-600');
+      }
+
+      const mutedRole = rolePlayMute[dialogue.id] || 'none';
+
+      for (let i = 0; i < dialogue.lines.length; i++) {
+        if (stopDialogueFlag) break;
+
+        const line = dialogue.lines[i];
+        const lineEl = document.getElementById(`line-${dialogue.id}-${i}`);
+        if (lineEl) {
+          lineEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        if (mutedRole === line.speaker) {
+          // Pause for the student to read their role aloud
+          if (lineEl) {
+            lineEl.classList.add('speaking-pulse', 'ring-4', 'ring-amber-400', 'bg-amber-50');
+          }
+          showToast(`🎤 輪到你扮演 ${line.speaker} (${line.name}) 朗讀囉！`);
+          await new Promise(r => setTimeout(r, 2800));
+          if (lineEl) {
+            lineEl.classList.remove('speaking-pulse', 'ring-4', 'ring-amber-400', 'bg-amber-50');
+          }
+        } else {
+          await speakText(line.en, rate, lineEl);
+          if (!stopDialogueFlag) {
+            await new Promise(r => setTimeout(r, 450));
+          }
+        }
+      }
+
+      stopDialoguePlayback();
+    }
+
+    // ==========================================
+    // 4. UI INTERACTION & STATE HELPERS
+    // ==========================================
+    function toggleChinese() {
+      showChinese = !showChinese;
+      document.querySelectorAll('.zh-translation').forEach(el => {
+        if (showChinese) {
+          el.classList.remove('hidden');
+        } else {
+          el.classList.add('hidden');
+        }
+      });
+
+      const deskText = document.getElementById('zhTextDesktop');
+      const deskIcon = document.getElementById('zhIconDesktop');
+      const mobText = document.getElementById('zhTextMobile');
+      const mobIcon = document.getElementById('zhIconMobile');
+
+      if (deskText) deskText.textContent = showChinese ? '中英對照：開啟' : '中英對照：隱藏';
+      if (deskIcon) deskIcon.textContent = showChinese ? '👁️' : '🙈';
+      if (mobText) mobText.textContent = showChinese ? '隱藏中文' : '顯示中文';
+      if (mobIcon) mobIcon.textContent = showChinese ? '👁️' : '🙈';
+    }
+
+    function setRolePlay(dialogueId, role) {
+      stopDialoguePlayback();
+      rolePlayMute[dialogueId] = role;
+      renderContent();
+      if (role === 'none') {
+        showToast("🔊 已切換為「全聽模式」");
+      } else {
+        showToast(`🎭 已切換為扮演角色 ${role}！點擊「播放整段對話」輪到你時會停頓讓你開口說！`);
+      }
+    }
+
+    function addStars(amount) {
+      stars += amount;
+      const starEl = document.getElementById('starCount');
+      if (starEl) starEl.textContent = stars;
+    }
+
+    let toastTimer = null;
+    function showToast(msg) {
+      const box = document.getElementById('toastBox');
+      const text = document.getElementById('toastMessage');
+      if (!box || !text) return;
+
+      text.textContent = msg;
+      box.classList.remove('translate-y-24', 'opacity-0');
+      box.classList.add('translate-y-0', 'opacity-100');
+
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        box.classList.remove('translate-y-0', 'opacity-100');
+        box.classList.add('translate-y-24', 'opacity-0');
+      }, 3200);
+    }
+
+    function switchTab(tabKey, targetDialogueId = null) {
+      stopDialoguePlayback();
+      currentTab = tabKey;
+
+      // Update active styling on all navigation tabs
+      document.querySelectorAll('.stage-tab').forEach(btn => {
+        if (btn.id === 'tab-quiz') {
+          btn.className = 'stage-tab flex flex-col items-center justify-center p-2.5 rounded-2xl border-2 font-extrabold text-xs sm:text-sm transition cursor-pointer bg-amber-50 border-amber-300 text-amber-800 hover:bg-amber-100';
+        } else {
+          btn.className = 'stage-tab flex flex-col items-center justify-center p-2.5 rounded-2xl border-2 font-extrabold text-xs sm:text-sm transition cursor-pointer bg-white/80 border-slate-200 text-slate-600 hover:border-sky-300';
+        }
+      });
+
+      const activeBtn = document.getElementById(`tab-${tabKey}`);
+      if (activeBtn) {
+        if (tabKey === 'quiz') {
+          activeBtn.className = 'stage-tab flex flex-col items-center justify-center p-2.5 rounded-2xl border-2 font-extrabold text-xs sm:text-sm transition cursor-pointer bg-amber-400 border-amber-600 text-slate-900 shadow-md';
+        } else {
+          activeBtn.className = 'stage-tab flex flex-col items-center justify-center p-2.5 rounded-2xl border-2 font-extrabold text-xs sm:text-sm transition cursor-pointer bg-white border-sky-500 text-sky-700 shadow-md';
+        }
+      }
+
+      renderContent();
+
+      if (targetDialogueId) {
+        setTimeout(() => {
+          const el = document.getElementById(targetDialogueId);
+          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 80);
+      }
+    }
+
+    function jumpToDialogue(chapterKey, dialogueId, sentenceNum) {
+      switchTab(chapterKey, dialogueId);
+      showToast(`💬 已跳轉至課本第 #${sentenceNum} 句所在的對話情境！`);
+    }
+
+    function escapeForJs(str) {
+      return str.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+    }
+
+    // ==========================================
+    // 5. RENDERING VIEWS
+    // ==========================================
+    function renderContent() {
+      const container = document.getElementById('contentArea');
+      if (!container) return;
+
+      if (chaptersData[currentTab]) {
+        container.innerHTML = renderChapterView(currentTab);
+      } else if (currentTab === 'vocab60') {
+        container.innerHTML = renderVocabAnd60View();
+      } else if (currentTab === 'quiz') {
+        container.innerHTML = renderQuizView();
+      }
+    }
+
+    function renderChapterView(chapterKey) {
+      const chapter = chaptersData[chapterKey];
+      const zhClass = showChinese ? '' : 'hidden';
+
+      const dialoguesHtml = chapter.dialogues.map((dialogue, dIdx) => {
+        const mutedRole = rolePlayMute[dialogue.id] || 'none';
+
+        const roleButtonsHtml = [
+          { key: 'none', label: '🔊 全聽模式' },
+          ...dialogue.roles.map(r => ({ key: r, label: `🎭 扮演角色 ${r}` }))
+        ].map(opt => {
+          const isActive = mutedRole === opt.key;
+          return `
+            <button
+              onclick="setRolePlay('${dialogue.id}', '${opt.key}')"
+              class="px-3 py-1.5 rounded-xl text-xs font-extrabold border-2 transition cursor-pointer ${
+                isActive
+                  ? 'bg-amber-400 border-amber-500 text-slate-900 shadow-sm'
+                  : 'bg-slate-50 border-slate-200 text-slate-600 hover:bg-slate-100'
+              }"
+            >
+              ${opt.label}
+            </button>
+          `;
+        }).join('');
+
+        const linesHtml = dialogue.lines.map((line, lIdx) => {
+          const isRoleA = line.speaker === 'A';
+          const isRoleB = line.speaker === 'B';
+          const isMuted = mutedRole === line.speaker;
+
+          const badgeBg = isRoleA
+            ? 'bg-sky-100 text-sky-800 border-sky-300'
+            : isRoleB
+              ? 'bg-emerald-100 text-emerald-800 border-emerald-300'
+              : 'bg-purple-100 text-purple-800 border-purple-300';
+
+          const cardAlign = isRoleB ? 'sm:ml-6' : isRoleA ? 'sm:mr-6' : 'sm:mx-3';
+          const numBadges = line.nums.map(n => `#${n}`).join(', ');
+          const safeEn = escapeForJs(line.en);
+
+          return `
+            <div
+              id="line-${dialogue.id}-${lIdx}"
+              class="card-bounce ${cardAlign} bg-white rounded-2xl p-4 border-2 ${
+                isMuted ? 'border-amber-400 bg-amber-50/50' : 'border-slate-100 hover:border-sky-200'
+              } shadow-sm transition-all"
+            >
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <!-- Speaker & Text -->
+                <div class="flex items-start gap-3 flex-1">
+                  <div class="w-11 h-11 rounded-2xl bg-slate-100 flex items-center justify-center text-2xl shrink-0 border border-slate-200">
+                    ${line.avatar}
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <div class="flex flex-wrap items-center gap-2 mb-1">
+                      <span class="px-2.5 py-0.5 rounded-lg text-xs font-black border ${badgeBg}">
+                        ${line.speaker} • ${line.name}
+                      </span>
+                      <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-600 text-[11px] font-extrabold">
+                        課本 ${numBadges}
+                      </span>
+                      ${isMuted ? '<span class="px-2 py-0.5 rounded-md bg-amber-200 text-amber-900 text-[11px] font-black">🎤 輪到你說</span>' : ''}
+                    </div>
+
+                    <p class="text-base sm:text-lg font-extrabold text-slate-900 leading-snug">
+                      ${line.en}
+                    </p>
+                    <p class="zh-translation ${zhClass} text-sm font-bold text-slate-500 mt-1">
+                      ${line.zh}
+                    </p>
+                    ${line.vocabNote ? `
+                      <div class="mt-1.5 inline-block px-2.5 py-0.5 rounded-lg bg-amber-50 border border-amber-200 text-xs font-bold text-amber-800">
+                        💡 重點詞彙：${line.vocabNote}
+                      </div>
+                    ` : ''}
+                  </div>
+                </div>
+
+                <!-- Normal & Slow UK Pronunciation Buttons -->
+                <div class="flex items-center gap-2 self-end sm:self-center shrink-0">
+                  <button
+                    onclick="speakText('${safeEn}', 1.0, document.getElementById('line-${dialogue.id}-${lIdx}'))"
+                    class="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-sky-500 hover:bg-sky-600 active:scale-95 text-white font-extrabold text-xs sm:text-sm shadow-sm transition cursor-pointer"
+                    title="正常英國語速朗讀"
+                  >
+                    <span>🔊</span>
+                    <span>正常</span>
+                  </button>
+                  <button
+                    onclick="speakText('${safeEn}', 0.68, document.getElementById('line-${dialogue.id}-${lIdx}'))"
+                    class="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-amber-100 hover:bg-amber-200 active:scale-95 text-amber-900 border border-amber-300 font-extrabold text-xs sm:text-sm transition cursor-pointer"
+                    title="清晰慢速朗讀 (0.68x)"
+                  >
+                    <span>🐢</span>
+                    <span>慢讀</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        return `
+          <article id="${dialogue.id}" class="bg-white/90 backdrop-blur-sm rounded-3xl p-5 sm:p-6 border-2 border-sky-100 shadow-md space-y-4">
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 pb-4 border-b border-slate-100">
+              <div>
+                <h3 class="text-lg sm:text-xl font-black text-sky-950">${dialogue.title}</h3>
+                <p class="text-xs sm:text-sm font-semibold text-slate-500 mt-0.5">${dialogue.desc}</p>
+              </div>
+
+              <div class="flex flex-wrap items-center gap-2">
+                <button
+                  id="playAllBtn-${dialogue.id}"
+                  onclick="playFullDialogue('${chapterKey}', ${dIdx}, 0.95)"
+                  class="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-600 active:scale-95 text-white font-extrabold text-xs sm:text-sm shadow-sm transition cursor-pointer"
+                >
+                  <span>▶️ 播放整段對話</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Role Play Selector Bar -->
+            <div class="flex flex-wrap items-center gap-2 bg-sky-50/70 p-2.5 rounded-2xl border border-sky-100">
+              <span class="text-xs font-extrabold text-sky-900 mr-1">練習模式：</span>
+              ${roleButtonsHtml}
+            </div>
+
+            <!-- Dialogue Lines -->
+            <div class="space-y-3">
+              ${linesHtml}
+            </div>
+          </article>
+        `;
+      }).join('');
+
+      return `
+        <div class="bg-white rounded-3xl p-5 border-2 border-sky-200 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <span class="inline-block px-3 py-1 rounded-full text-xs font-black border ${chapter.badgeColor} mb-1.5">
+              循序漸進對話單元
+            </span>
+            <h2 class="text-xl sm:text-2xl font-black text-slate-900">${chapter.title}</h2>
+            <p class="text-xs sm:text-sm font-semibold text-slate-600 mt-1">${chapter.subtitle}</p>
+          </div>
+        </div>
+        ${dialoguesHtml}
+      `;
+    }
+
+    function renderVocabAnd60View() {
+      const zhClass = showChinese ? '' : 'hidden';
+
+      const vocabCardsHtml = vocabularyList.map((v, idx) => {
+        const safeWord = escapeForJs(v.word);
+        const safeEx = escapeForJs(v.exampleEn);
+        return `
+          <div id="vocab-card-${idx}" class="card-bounce bg-white rounded-2xl p-4 border-2 border-sky-100 hover:border-sky-300 shadow-sm flex flex-col justify-between gap-3">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-1">
+                <span class="text-2xl">${v.emoji}</span>
+                <span class="px-2 py-0.5 rounded-md bg-sky-50 text-sky-700 text-xs font-extrabold border border-sky-200">
+                  #${v.id} • ${v.pos}
+                </span>
+              </div>
+              <h4 class="text-lg font-black text-slate-900">${v.word}</h4>
+              <p class="text-xs font-bold text-sky-600">${v.phonetic}</p>
+              <p class="zh-translation ${zhClass} text-sm font-extrabold text-amber-800 mt-1">${v.zh}</p>
+
+              <div class="mt-2.5 pt-2.5 border-t border-slate-100">
+                <p class="text-xs font-bold text-slate-700">例：${v.exampleEn}</p>
+                <p class="zh-translation ${zhClass} text-xs font-semibold text-slate-500 mt-0.5">${v.exampleZh}</p>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-2 pt-1">
+              <button
+                onclick="speakText('${safeWord}', 0.95, document.getElementById('vocab-card-${idx}'))"
+                class="flex-1 py-1.5 px-2.5 rounded-xl bg-sky-500 hover:bg-sky-600 text-white font-extrabold text-xs transition cursor-pointer"
+              >
+                🔊 單字
+              </button>
+              <button
+                onclick="speakText('${safeEx}', 0.9, document.getElementById('vocab-card-${idx}'))"
+                class="flex-1 py-1.5 px-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold text-xs transition cursor-pointer"
+              >
+                🗣️ 例句
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      const filteredSentences = allSentences.filter(s => {
+        const matchesLevel = sentenceLevelFilter === 'ALL' || s.chapter === sentenceLevelFilter;
+        const q = sentenceSearch.trim().toLowerCase();
+        const matchesQuery = !q ||
+          s.en.toLowerCase().includes(q) ||
+          s.zh.toLowerCase().includes(q) ||
+          String(s.id) === q;
+        return matchesLevel && matchesQuery;
+      });
+
+      const sentenceRowsHtml = filteredSentences.map(s => {
+        const safeEn = escapeForJs(s.en);
+        return `
+          <div id="ref-row-${s.id}" class="bg-white rounded-2xl p-3.5 border-2 border-slate-100 hover:border-sky-200 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div class="flex items-start gap-3 flex-1">
+              <span class="w-9 h-9 rounded-xl bg-sky-100 text-sky-800 font-black text-xs flex items-center justify-center shrink-0">
+                #${s.id}
+              </span>
+              <div>
+                <div class="flex flex-wrap items-center gap-2 mb-0.5">
+                  <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-600 text-[11px] font-extrabold">${s.level}</span>
+                  <button
+                    onclick="jumpToDialogue('${s.chapter}', '${s.dialogueId}', ${s.id})"
+                    class="text-xs font-extrabold text-sky-600 hover:text-sky-800 underline cursor-pointer"
+                  >
+                    💬 前往對話練習 ↗
+                  </button>
+                </div>
+                <p class="text-sm sm:text-base font-extrabold text-slate-900">${s.en}</p>
+                <p class="zh-translation ${zhClass} text-xs sm:text-sm font-semibold text-slate-500 mt-0.5">${s.zh}</p>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-2 self-end sm:self-center shrink-0">
+              <button
+                onclick="speakText('${safeEn}', 1.0, document.getElementById('ref-row-${s.id}'))"
+                class="px-3 py-1.5 rounded-xl bg-sky-500 hover:bg-sky-600 text-white font-extrabold text-xs transition cursor-pointer"
+              >
+                🔊 正常
+              </button>
+              <button
+                onclick="speakText('${safeEn}', 0.68, document.getElementById('ref-row-${s.id}'))"
+                class="px-3 py-1.5 rounded-xl bg-amber-100 hover:bg-amber-200 text-amber-900 border border-amber-300 font-extrabold text-xs transition cursor-pointer"
+              >
+                🐢 慢讀
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      return `
+        <!-- Key Vocabulary Section -->
+        <section class="bg-white/90 rounded-3xl p-5 sm:p-6 border-2 border-sky-100 shadow-md space-y-4">
+          <div>
+            <h3 class="text-xl font-black text-sky-950">📖 課本重點詞彙卡 (13 Key Words & Phrases)</h3>
+            <p class="text-xs sm:text-sm font-semibold text-slate-500">點擊單字或例句聆聽道地英國發音</p>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            ${vocabCardsHtml}
+          </div>
+        </section>
+
+        <!-- Complete 60 Sentences Reference List -->
+        <section class="bg-white/90 rounded-3xl p-5 sm:p-6 border-2 border-sky-100 shadow-md space-y-4">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+            <div>
+              <h3 class="text-xl font-black text-sky-950">🗂️ 課本完整 60 句中英對照總表</h3>
+              <p class="text-xs sm:text-sm font-semibold text-slate-500">可搜尋句號、英文或中文，並直接跳轉至對應對話情境</p>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-2">
+              <input
+                type="text"
+                value="${escapeForJs(sentenceSearch)}"
+                oninput="updateSentenceFilter(this.value, sentenceLevelFilter)"
+                placeholder="搜尋句號或關鍵字..."
+                class="px-3.5 py-2 rounded-xl border-2 border-sky-200 text-xs sm:text-sm font-bold focus:outline-none focus:border-sky-500"
+              />
+              <select
+                onchange="updateSentenceFilter(sentenceSearch, this.value)"
+                class="px-3 py-2 rounded-xl border-2 border-sky-200 text-xs sm:text-sm font-bold bg-white focus:outline-none focus:border-sky-500"
+              >
+                <option value="ALL" ${sentenceLevelFilter === 'ALL' ? 'selected' : ''}>全部階段 (60句)</option>
+                <option value="level1" ${sentenceLevelFilter === 'level1' ? 'selected' : ''}>初階篇 A</option>
+                <option value="level2" ${sentenceLevelFilter === 'level2' ? 'selected' : ''}>初階篇 B</option>
+                <option value="level3" ${sentenceLevelFilter === 'level3' ? 'selected' : ''}>進階篇 A</option>
+                <option value="level4" ${sentenceLevelFilter === 'level4' ? 'selected' : ''}>進階篇 B</option>
+                <option value="level5" ${sentenceLevelFilter === 'level5' ? 'selected' : ''}>高階篇 A</option>
+                <option value="level6" ${sentenceLevelFilter === 'level6' ? 'selected' : ''}>高階篇 B</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="space-y-2.5">
+            ${sentenceRowsHtml || '<p class="text-center py-6 text-slate-400 font-bold">找不到符合條件的句子，請試試其他關鍵字！</p>'}
+          </div>
+        </section>
+      `;
+    }
+
+    function updateSentenceFilter(searchVal, levelVal) {
+      sentenceSearch = searchVal;
+      sentenceLevelFilter = levelVal;
+      renderContent();
+    }
+
+    // ==========================================
+    // 6. INTERACTIVE QUIZ VIEW
+    // ==========================================
+    function renderQuizView() {
+      if (quizIndex >= quizQuestions.length) {
+        return `
+          <div class="bg-white rounded-3xl p-8 border-4 border-amber-300 shadow-lg text-center max-w-2xl mx-auto space-y-4">
+            <div class="text-6xl">🎉</div>
+            <h3 class="text-2xl sm:text-3xl font-black text-sky-950">太棒了！你完成了第一課小挑戰！</h3>
+            <p class="text-lg font-extrabold text-amber-600">
+              你的得分：${quizScore} / ${quizQuestions.length} 題
+            </p>
+            <p class="text-sm font-semibold text-slate-600">
+              繼續練習英國英語發音，收集更多學習星星吧！
+            </p>
+            <button
+              onclick="restartQuiz()"
+              class="px-6 py-3 rounded-2xl bg-sky-500 hover:bg-sky-600 text-white font-black text-base shadow-md transition cursor-pointer"
+            >
+              🔄 再玩一次挑戰
+            </button>
+          </div>
+        `;
+      }
+
+      const q = quizQuestions[quizIndex];
+      const safeAudio = escapeForJs(q.audioEn);
+
+      const optionsHtml = q.options.map((opt, idx) => `
+        <button
+          id="quiz-opt-${idx}"
+          onclick="answerQuiz(${idx})"
+          ${quizAnswered ? 'disabled' : ''}
+          class="w-full text-left p-4 rounded-2xl border-2 border-slate-200 hover:border-sky-400 hover:bg-sky-50 font-extrabold text-sm sm:text-base text-slate-800 transition cursor-pointer disabled:cursor-default"
+        >
+          <span class="inline-block w-7 h-7 rounded-lg bg-sky-100 text-sky-800 text-center leading-7 font-black mr-2">
+            ${String.fromCharCode(65 + idx)}
+          </span>
+          ${opt.text}
+        </button>
+      `).join('');
+
+      return `
+        <div class="bg-white rounded-3xl p-6 sm:p-8 border-2 border-amber-300 shadow-md max-w-3xl mx-auto space-y-5">
+          <div class="flex items-center justify-between">
+            <span class="px-3 py-1 rounded-full bg-amber-100 text-amber-900 font-black text-xs">
+              🎯 趣味聽力與會話測驗 • 第 ${quizIndex + 1} / ${quizQuestions.length} 題
+            </span>
+            <span class="text-sm font-black text-emerald-600">目前答對：${quizScore} 題</span>
+          </div>
+
+          <h3 class="text-lg sm:text-xl font-black text-slate-900 leading-snug">
+            ${q.qZh}
+          </h3>
+
+          <div class="flex flex-wrap items-center gap-3 bg-sky-50 p-4 rounded-2xl border border-sky-200">
+            <button
+              onclick="speakText('${safeAudio}', 0.95)"
+              class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-sky-500 hover:bg-sky-600 text-white font-extrabold text-sm shadow-sm transition cursor-pointer"
+            >
+              <span>🔊 聽題目語音 (正常)</span>
+            </button>
+            <button
+              onclick="speakText('${safeAudio}', 0.68)"
+              class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-amber-100 hover:bg-amber-200 text-amber-900 border border-amber-300 font-extrabold text-sm transition cursor-pointer"
+            >
+              <span>🐢 聽題目語音 (慢讀)</span>
+            </button>
+          </div>
+
+          <div class="space-y-3">
+            ${optionsHtml}
+          </div>
+
+          <div id="quizFeedback" class="hidden pt-2"></div>
+        </div>
+      `;
+    }
+
+    function answerQuiz(selectedIdx) {
+      if (quizAnswered) return;
+      quizAnswered = true;
+
+      const q = quizQuestions[quizIndex];
+      const isCorrect = q.options[selectedIdx].correct;
+
+      q.options.forEach((opt, idx) => {
+        const btn = document.getElementById(`quiz-opt-${idx}`);
+        if (!btn) return;
+        if (opt.correct) {
+          btn.classList.remove('border-slate-200');
+          btn.classList.add('border-emerald-500', 'bg-emerald-50', 'text-emerald-900');
+        } else if (idx === selectedIdx) {
+          btn.classList.remove('border-slate-200');
+          btn.classList.add('border-rose-400', 'bg-rose-50', 'text-rose-900');
+        }
+      });
+
+      if (isCorrect) {
+        quizScore++;
+        addStars(3);
+        speakText("Well done! Brilliant!", 1.0);
+      } else {
+        speakText("Good try! Let's check the right answer.", 1.0);
+      }
+
+      const feedbackEl = document.getElementById('quizFeedback');
+      if (feedbackEl) {
+        feedbackEl.classList.remove('hidden');
+        feedbackEl.innerHTML = `
+          <div class="p-4 rounded-2xl ${isCorrect ? 'bg-emerald-100 text-emerald-900' : 'bg-rose-100 text-rose-900'} flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div class="font-extrabold text-sm">
+              ${isCorrect ? '🌟 答對了！你獲得 3 顆星星！' : '💡 差一點點！綠色框框才是正確答案喔！'}
+            </div>
+            <button
+              onclick="nextQuizQuestion()"
+              class="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-extrabold text-xs sm:text-sm cursor-pointer self-end sm:self-center"
+            >
+              ${quizIndex + 1 < quizQuestions.length ? '下一題 ➡️' : '查看總成績 🏆'}
+            </button>
+          </div>
+        `;
+      }
+    }
+
+    function nextQuizQuestion() {
+      quizIndex++;
+      quizAnswered = false;
+      renderContent();
+    }
+
+    function restartQuiz() {
+      quizIndex = 0;
+      quizScore = 0;
+      quizAnswered = false;
+      renderContent();
+    }
+
+    // ==========================================
+    // 7. INITIALIZE APP ON LOAD
+    // ==========================================
+    window.addEventListener('DOMContentLoaded', () => {
+      loadUKVoices();
+      renderContent();
+    });
+  </script>
+</body>
+</html>
